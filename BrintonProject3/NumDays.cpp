@@ -62,6 +62,16 @@ NumDays::NumDays(double hrs)
 
 //Functions
 
+NumDays operator+(NumDays a, NumDays b)
+{
+	return (a.hrsWorked + b.hrsWorked);
+}
+
+NumDays operator-(NumDays a, NumDays b)
+{
+	return (a.hrsWorked - b.hrsWorked);
+}
+
 void NumDays::addHours(double hrs)
 {
 	hrsWorked += hrs;

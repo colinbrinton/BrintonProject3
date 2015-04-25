@@ -79,11 +79,12 @@ public:
 	double getHours();
 
 	// 5. Overloaded Operators
-	void operator+
 
 	// 6. Type Conversion Operators
 
 	// 7. Granted "friend" Method Declarations
+	friend NumDays operator+(NumDays a, NumDays b);
+	friend NumDays operator-(NumDays a, NumDays b);
 
 	// 8. Public "static const" Value Declarations
 
