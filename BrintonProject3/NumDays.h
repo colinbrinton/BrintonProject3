@@ -77,6 +77,7 @@ public:
 	NumDays operator++(int);
 	NumDays operator--();
 	NumDays operator--(int);
+	NumDays operator-=(double hrs);
 
 	// 4. Observer Methods
 	int getDays();
@@ -89,6 +90,7 @@ public:
 	// 7. Granted "friend" Method Declarations
 	friend NumDays operator+(NumDays a, NumDays b);
 	friend NumDays operator-(NumDays a, NumDays b);
+	friend ostream &operator<<(ostream& out, NumDays a)
 
 
 	// 8. Public "static const" Value Declarations

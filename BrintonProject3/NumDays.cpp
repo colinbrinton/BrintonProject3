@@ -39,6 +39,7 @@
 // External Definition files
 // The first inclusion file MUST always be declared and MUST be first in the list
 #include "stdafx.h"  // Defines IDE required external definition files
+#include <ostream>
 #include "NumDays.h"   // Class Definition file
 
 // Namespaces utilized in this program
@@ -72,6 +73,12 @@ NumDays operator-(NumDays a, NumDays b)
 	return NumDays(a.hrsWorked - b.hrsWorked);
 }
 
+ostream &operator<<(ostream& out, NumDays a)
+{
+	out << a.getDays() << " days, " << a.getHours() << " hours";
+	return out;
+}
+
 NumDays NumDays::operator++()
 {
 	hrsWorked++;
@@ -96,6 +103,12 @@ NumDays NumDays::operator--(int)
 	NumDays temp = *this;
 	hrsWorked--;
 	return temp;
+}
+
+NumDays NumDays::operator-=(double hrs)
+{
+	(hrsWorked - hrs);
+	return *this;
 }
 
 void NumDays::addHours(double hrs)
