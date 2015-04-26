@@ -73,6 +73,10 @@ public:
 
 	// 3. Mutator Methods
 	void addHours(double hrs);
+	NumDays operator++();
+	NumDays operator++(int);
+	NumDays operator--();
+	NumDays operator--(int);
 
 	// 4. Observer Methods
 	int getDays();
@@ -85,6 +89,7 @@ public:
 	// 7. Granted "friend" Method Declarations
 	friend NumDays operator+(NumDays a, NumDays b);
 	friend NumDays operator-(NumDays a, NumDays b);
+
 
 	// 8. Public "static const" Value Declarations
 

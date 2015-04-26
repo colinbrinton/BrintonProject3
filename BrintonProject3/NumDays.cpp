@@ -64,12 +64,38 @@ NumDays::NumDays(double hrs)
 
 NumDays operator+(NumDays a, NumDays b)
 {
-	return (a.hrsWorked + b.hrsWorked);
+	return NumDays(a.hrsWorked + b.hrsWorked);
 }
 
 NumDays operator-(NumDays a, NumDays b)
 {
-	return (a.hrsWorked - b.hrsWorked);
+	return NumDays(a.hrsWorked - b.hrsWorked);
+}
+
+NumDays NumDays::operator++()
+{
+	hrsWorked++;
+	return *this;
+}
+
+NumDays NumDays::operator++(int)
+{
+	NumDays temp = *this;
+	hrsWorked++;
+	return temp;
+}
+
+NumDays NumDays::operator--()
+{
+	hrsWorked--;
+	return *this;
+}
+
+NumDays NumDays::operator--(int)
+{
+	NumDays temp = *this;
+	hrsWorked--;
+	return temp;
 }
 
 void NumDays::addHours(double hrs)
