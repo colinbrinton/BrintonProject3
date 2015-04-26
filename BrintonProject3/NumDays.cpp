@@ -65,7 +65,7 @@ NumDays::NumDays(double hrs)
 
 NumDays operator+(NumDays a, NumDays b)
 {
-	return NumDays(a.hrsWorked + b.hrsWorked);
+	return NumDays( a.hrsWorked + b.hrsWorked);
 }
 
 NumDays operator-(NumDays a, NumDays b)
@@ -107,13 +107,17 @@ NumDays NumDays::operator--(int)
 
 NumDays& NumDays::operator-=(const NumDays& a)
 {
-	(this->hrsWorked) = ((this->hrsWorked) - (a.hrsWorked));
-	return *this;
+	this->hrsWorked -= (a.hrsWorked);
+
+	if (this->hrsWorked < 0)
+		*this = 0;
+
+	 return *this;
 }
 
 void NumDays::addHours(double hrs)
 {
-	(this->hrsWorked) += hrs;
+	hrsWorked += hrs;
 }
 
 int NumDays::getDays()
