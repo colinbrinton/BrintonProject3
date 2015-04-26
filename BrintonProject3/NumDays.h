@@ -51,6 +51,7 @@
 // External Definition Files
 
 
+using namespace std;
 
 class NumDays
 {
@@ -77,7 +78,7 @@ public:
 	NumDays operator++(int);
 	NumDays operator--();
 	NumDays operator--(int);
-	NumDays operator-=(double hrs);
+	NumDays& operator-=(const NumDays& a);
 
 	// 4. Observer Methods
 	int getDays();
@@ -90,7 +91,7 @@ public:
 	// 7. Granted "friend" Method Declarations
 	friend NumDays operator+(NumDays a, NumDays b);
 	friend NumDays operator-(NumDays a, NumDays b);
-	friend ostream &operator<<(ostream& out, NumDays a)
+	friend ostream& operator<< (ostream& out, const NumDays);
 
 
 	// 8. Public "static const" Value Declarations
