@@ -1,30 +1,45 @@
 #pragma once
 
 /******************************************************************************
-*       Class: **Class Name**       (Ex: Car)
-*  Base Class: ** None **  Supply Base Class name if inheritance applies
+*       Class: NumHours
+*  Base Class: ** None **
 *
-* This file defines the members of the class: ***Class Name***
+* This file defines the members of the class: NumHours
 * These members include class variable data members, class constant, static
 * data members, and class method declarations only and/or class method
 * declarations and definitions.
 *
-* Programmer: **Your Name**
+* Programmer: Colin Brinton
 *
 * Revision     Date                        Release Comment
 * --------  ----------  -------------------------------------------------------
-*   1.0     MM/DD/YYYY  Initial Release
-*   X.Y     MM/DD/YYYY  ** Short, 1 line description of changes to program  **
+*   1.0     04/26/2015  Initial Release
+* 
 *
 * Class Description
 * -----------------
-* ** Describe the class defined here, including it's purpose  **
-* ** This may take several lines to describe                  **
+*  The purpose of this class is to store the number of hours worked by an employee
+* and convert that number to days and remaining hours. Provided overloaded operators
+* for addition, subtraction, incredment, decrement, subtraction assign. Also Provides 
+* an overloaded output operator.
 *
 *
 * ----------------------------- Public Interface ------------------------------
 *      Method                               Description
 * ----------------  -----------------------------------------------------------
+* NumDays()						Default Constructor
+* ~NumDays()					Class Destructor
+* NumDays(double hrs)			Initializing Constructor, accepts double value and
+*									stores it in hrsWorked
+* addHours(double hrs)			Adds hours to hrsWorked
+* operator++()					Adds 1 to hrsWorked at call time (prefix)
+* operator++(int)				Adds 1 to hrsWorked after call time (postfix)
+* operator--()					Subtracts 1 to hrsWorked at call time (prefix)
+* operator--(int)				Subtracts 1 to hrsWorked after call time (postfix)
+* operator-=(const NumDays& a)	Compound subtraction assignment, tests for negative
+*									hours, sets hrsWorked to 0 if true
+* getDays()						Converts hrsWorked to day, returns int
+* getHours()					Provides remaining hours, returns double
 *
 *
 * ------------------------------ Private Methods ------------------------------
@@ -37,7 +52,7 @@
 *               Data
 *    Type       Type       Name                    Description
 * ---------- --------- ------------ -------------------------------------------
-* ***Type: static, non-static***
+* non-static   double   hrsWorked     Stores the number of hours
 *
 *
 * ------------------  Public "static const" Data Members ----------------------
@@ -48,53 +63,45 @@
 *
 *******************************************************************************
 */
+// Namespaces utilized in this header file
+using namespace std; // Announces to the compiler that members of the namespace
+// "std" are utilized in this file
+
 // External Definition Files
-
-
-using namespace std;
-
 class NumDays
 {
 private:
 	// 1. Non-static (instance) Variable Declarations
 	double hrsWorked;
-	double daysWorked;
-	// 2. Static Constant Value Declarations
 
 public:
 	// 1. Constructors
 	//    A. Default Constructor
 	NumDays();
+
 	//    B. Initializing Constructors
 	NumDays(double hrs);
-	//    C. Conversion Constructors
 
 	// 2. Class Destructor
 	~NumDays();
 
 	// 3. Mutator Methods
 	void addHours(double hrs);
+
+	// 4. Observer Methods
+	int getDays() const;
+	double getHours() const;
+
+	// 5. Overloaded Operators
 	NumDays operator++();
 	NumDays operator++(int);
 	NumDays operator--();
 	NumDays operator--(int);
 	NumDays& operator-=(const NumDays& a);
 
-	// 4. Observer Methods
-	int getDays();
-	double getHours();
-
-	// 5. Overloaded Operators
-
-	// 6. Type Conversion Operators
-
-	// 7. Granted "friend" Method Declarations
-	friend NumDays operator+(NumDays a, NumDays b);
-	friend NumDays operator-(NumDays a, NumDays b);
+	// 6. Granted "friend" Method Declarations
+	friend NumDays operator+(NumDays a, NumDays b) { return NumDays(a.hrsWorked + b.hrsWorked); }
+	friend NumDays operator-(NumDays a, NumDays b) { return NumDays(a.hrsWorked - b.hrsWorked); }
 	friend ostream& operator<< (ostream& out, const NumDays);
-
-
-	// 8. Public "static const" Value Declarations
-
 };
 
