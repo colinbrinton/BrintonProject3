@@ -20,7 +20,7 @@
 * -----------------
 *  The purpose of this class is to store the number of hours worked by an employee
 * and convert that number to days and remaining hours. Provided overloaded operators
-* for addition, subtraction, incredment, decrement, subtraction assign. Also Provides 
+* for addition, subtraction, increment, decrement, subtraction assign. Also Provides 
 * an overloaded output operator.
 *
 *

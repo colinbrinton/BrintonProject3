@@ -74,7 +74,6 @@ NumDays::NumDays(double hrs)
 // Mutator Methods
 
 	//Operator Overloading
-
 NumDays NumDays::operator++()  //Prefix
 {
 	hrsWorked++;
@@ -103,7 +102,7 @@ NumDays NumDays::operator--(int)  //Postfix
 
 NumDays& NumDays::operator-=(const NumDays& a)
 {
-	//Perform Subtraction Assingment
+	//Perform Subtraction Assignment
 	this->hrsWorked -= (a.hrsWorked);
 
 	// Test for negative hours
@@ -120,7 +119,6 @@ void NumDays::addHours(double hrs)
 
 
 	// Observer Methods
-
 int NumDays::getDays() const  // Declared cosnt because the method does not change
 {									// any member variables
 	double days;
@@ -144,7 +142,29 @@ NumDays::~NumDays()
 
 // Friend methods
 
-	//Operator Overloading
+/******************************************************************************
+* Method: operator<<()
+*
+* Method Description
+* ------------------
+* An operator overloading function, allows for specifically formatted output of days
+* and hours worked.
+*
+* Method Arguments
+* ----------------
+*   Type        Name                        Description
+* --------  -------------  ------------------------------------------------
+* ostream	out				Output for console
+* NumDays	a				Object to be displayed
+*
+* Return Value
+* ------------
+*   Type                              Description
+* --------  ---------------------------------------------------------------
+* ostream	Console output
+*
+***************************************************************************
+*/
 
 ostream &operator<<(ostream& out, NumDays a)
 {
